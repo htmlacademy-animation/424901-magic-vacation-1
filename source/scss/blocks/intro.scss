@@ -163,7 +163,9 @@
   }
 }
 
-.screen.active .fade-in_bottom {
+#top.active .fade-in_bottom,
+.swiper-slide.swiper-slide-active .fade-in_bottom,
+.swiper-slide.swiper-slide-next .fade-in_bottom {
   animation: fadeInBottom ease 1.2s;
 }
 

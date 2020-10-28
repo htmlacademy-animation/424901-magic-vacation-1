@@ -171,6 +171,11 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: {
+    property: color, background-color, border-color;
+    duration: .3s;
+    timing-function: ease-in;
+  }
 
   @media (min-width: $stop-scaling) {
     width: 40px;
