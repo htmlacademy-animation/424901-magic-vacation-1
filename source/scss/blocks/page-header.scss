@@ -5,6 +5,7 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+  transform: translateX(350px);
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -17,6 +18,25 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     padding: 0.9rem 0;
   }
+}
+
+.page-header, .page-header__logo {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: {
+    property: visibility, opacity, pointer-events, transform;
+    duration: .9s;
+    timing-function: cubic-bezier(0,.9,.21,.95);
+  }
+}
+
+
+.loaded .page-header, .loaded .page-header__logo {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0%);
 }
 
 .page-header__wrapper {
@@ -35,6 +55,7 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-700px);
 
   @media (min-width: $stop-scaling) {
     top: -5px;

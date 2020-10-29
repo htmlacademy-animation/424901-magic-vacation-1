@@ -47,6 +47,16 @@
   background-color: $c-light;
   z-index: 1;
 
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: {
+    property: visibility, pointer-events, opacity, transform;
+    duration: .9s;
+    timing-function: cubic-bezier(0,.9,.21,.9);
+  }
+
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
     height: 3.5rem;
@@ -68,6 +78,13 @@
       height: 16rem;
     }
   }
+}
+
+.loaded .screen__footer {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0%);
 }
 
 .screen__footer-wrapper {
