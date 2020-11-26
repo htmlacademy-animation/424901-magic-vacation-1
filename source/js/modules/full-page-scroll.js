@@ -1,3 +1,4 @@
+import { set } from 'lodash';
 import throttle from 'lodash/throttle';
 
 export default class FullPageScroll {
@@ -10,6 +11,8 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+
+    this.bgPrizes = document.querySelector('.bg__prizes');
   }
 
   init() {
@@ -41,8 +44,16 @@ export default class FullPageScroll {
 
   changeVisibilityDisplay() {
     this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
+      if (screen.id === 'story' && !screen.classList.contains('screen--hidden')) {
+        setTimeout(() => {
+          console.log('asdsd')
+          screen.classList.add(`screen--hidden`);
+          screen.classList.remove(`active`);
+        }, 800)
+      } else {
+        screen.classList.add(`screen--hidden`);
+        screen.classList.remove(`active`);
+      }
     });
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     this.screenElements[this.activeScreen].classList.add(`active`);
