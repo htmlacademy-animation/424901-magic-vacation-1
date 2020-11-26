@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import {set} from 'lodash';
 import throttle from 'lodash/throttle';
 
 export default class FullPageScroll {
@@ -46,10 +46,9 @@ export default class FullPageScroll {
     this.screenElements.forEach((screen) => {
       if (screen.id === 'story' && !screen.classList.contains('screen--hidden')) {
         setTimeout(() => {
-          console.log('asdsd')
           screen.classList.add(`screen--hidden`);
           screen.classList.remove(`active`);
-        }, 800)
+        }, 800);
       } else {
         screen.classList.add(`screen--hidden`);
         screen.classList.remove(`active`);
