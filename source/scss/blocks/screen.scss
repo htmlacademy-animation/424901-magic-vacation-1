@@ -318,21 +318,6 @@
   }
 }
 
-@keyframes bgAnimation {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(50%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 .screen--game {
   position: relative;
   background-color: $c-dark;
@@ -397,7 +382,7 @@
   opacity: 0;
 }
 
-.screen--prizes.active ~ .bg-section {
+.bg-section_active {
   transform: translateY(0);
   z-index: 0;
   opacity: 1;

@@ -43,19 +43,35 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    const changeDisplay = () => {
+      this.screenElements[this.activeScreen].classList.add(`active`);
+      this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+      return;
+    }
+
     this.screenElements.forEach((screen) => {
-      if (screen.id === 'story' && !screen.classList.contains('screen--hidden')) {
+      // условие при котором мы проверяем, если клик произшел с экрана призы
+      // нужно удалить бэкгруанд
+      const bgPrizesItem = document.querySelector('.bg-section');
+      if (screen.id === 'prizes' && !screen.classList.contains('screen--hidden')) {
+        bgPrizesItem.classList.remove('bg-section_active');
+      }
+      // условие при котороым мы проверяем с какого экрана был произведен клик и на какой.
+      // если с истории на призы, то выполнить переключение с задержкой
+      if (screen.id === 'story' && !screen.classList.contains('screen--hidden') && this.screenElements[this.activeScreen].classList.contains('screen--prizes')) {
+        bgPrizesItem.classList.add('bg-section_active')
         setTimeout(() => {
           screen.classList.add(`screen--hidden`);
           screen.classList.remove(`active`);
+          changeDisplay();
         }, 800);
-      } else {
+      } else  {
         screen.classList.add(`screen--hidden`);
         screen.classList.remove(`active`);
       }
     });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
-    this.screenElements[this.activeScreen].classList.add(`active`);
+
+    changeDisplay();
   }
 
   changeActiveMenuItem() {

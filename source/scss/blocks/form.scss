@@ -31,10 +31,10 @@
 
 .form__field {
   flex: none;
-  margin-right: 3rem;
   padding: 0 5.6rem;
+  width: 0;
+  opacity: 0;
   height: 6rem;
-  width: calc(100% - 21rem);
   text-transform: uppercase;
   font: inherit;
   font-size: 2.4rem;
@@ -43,7 +43,13 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
+  &-wrp {
+    width: calc(100% - 21rem);
+    margin-right: 3rem;
 
+    display: flex;
+    justify-content: flex-end;
+  }
   &:focus {
     border: 1px solid $c-purple;
   }
@@ -75,6 +81,25 @@
     width: calc(100% - 5rem);
     height: 4rem;
     font-size: 1.6rem;
+  }
+}
+
+.screen--game.active .form__field {
+  width: calc(100% - 210px);
+  opacity: 1;
+  animation-name: animationField;
+  animation-duration: .3s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes animationField {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    width: calc(100% - 21rem);
   }
 }
 
